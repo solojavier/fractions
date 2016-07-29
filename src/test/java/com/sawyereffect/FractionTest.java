@@ -1,14 +1,14 @@
 package com.sawyereffect;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class FractionTest {
 
-    @Before
-    public void setUp() {
+    @Test(expected=IllegalArgumentException.class)
+    public void invalidDenominator() {
+        new Fraction(3, 0);
     }
 
     @Test
@@ -25,5 +25,13 @@ public class FractionTest {
 
         assertEquals(result.numerator, 47);
         assertEquals(result.denominator, 15);
+    }
+
+    @Test
+    public void sumIntegers() {
+        Fraction result = new Fraction(2, 1).add(new Fraction(2, 1));
+
+        assertEquals(result.numerator, 4);
+        assertEquals(result.denominator, 1);
     }
 }
